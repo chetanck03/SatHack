@@ -6,6 +6,7 @@ import { config, queryClient } from './config/wallet'
 import { Toaster } from 'sonner'
 import Navbar from './components/Navbar'
 import Footer from './components/layout/Footer'
+import AIAssistant from './components/ai/AIAssistant'
 import Home from './pages/Home'
 import Marketplace from './pages/Marketplace'
 import Dashboard from './pages/Dashboard'
@@ -34,6 +35,7 @@ function AppContent() {
         expand={false}
         duration={4000}
       />
+      <AIAssistant />
     </div>
   )
 }
