@@ -228,7 +228,7 @@ const FarmerOrderCard = ({
               </div>
               <div>
                 <span className="font-medium">Quantity:</span>
-                <div>{processedOrder.quantityKg} kg</div>
+                <div>{processedOrder.quantityKg} {processedProduce.produceType === 9 ? 'units' : 'kg'}</div>
               </div>
               <div>
                 <span className="font-medium">Amount:</span>
@@ -241,9 +241,9 @@ const FarmerOrderCard = ({
             </div>
 
             <div className="mt-2 text-sm text-gray-600">
-              <div><strong>Farm:</strong> {processedProduce.originFarm}</div>
-              <div><strong>Grade:</strong> {processedProduce.grade}</div>
-              <div><strong>Price per kg:</strong> {formatPrice(processedProduce.currentPrice)} ETH</div>
+              <div><strong>{processedProduce.produceType === 9 ? 'Owner:' : 'Farm:'}</strong> {processedProduce.originFarm}</div>
+              <div><strong>{processedProduce.produceType === 9 ? 'Condition:' : 'Grade:'}</strong> {processedProduce.grade}</div>
+              <div><strong>Price{processedProduce.produceType === 9 ? ':' : ' per kg:'}</strong> {formatPrice(processedProduce.currentPrice)} ETH</div>
             </div>
 
             {/* Delivery Address - Important for farmers to know where to deliver */}

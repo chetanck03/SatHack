@@ -130,10 +130,23 @@ const EditProduceModal = ({ produceId, onClose }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target
     console.log('Input change:', name, value) // Debug log
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormData(prev => {
+      const newData = {
+        ...prev,
+        [name]: value
+      }
+      
+      // When switching to machinery, set default condition
+      if (name === 'produceType' && value == PRODUCE_TYPES.MACHINERY) {
+        newData.grade = 'Good'
+      }
+      // When switching away from machinery, set default grade
+      else if (name === 'produceType' && prev.produceType == PRODUCE_TYPES.MACHINERY && value != PRODUCE_TYPES.MACHINERY) {
+        newData.grade = 'A'
+      }
+      
+      return newData
+    })
   }
 
   const handleCertificateUpload = (uploadResult) => {
@@ -222,8 +235,15 @@ const EditProduceModal = ({ produceId, onClose }) => {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">Produce Updated Successfully!</h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">Your produce information has been updated on the blockchain and is now visible to buyers with the new details.</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Machinery Updated Successfully!' : 'Produce Updated Successfully!'}
+            </h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              {formData.produceType == PRODUCE_TYPES.MACHINERY 
+                ? 'Your machinery information has been updated on the blockchain and is now visible to buyers with the new details.'
+                : 'Your produce information has been updated on the blockchain and is now visible to buyers with the new details.'
+              }
+            </p>
             <button
               onClick={onClose}
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
@@ -265,7 +285,9 @@ const EditProduceModal = ({ produceId, onClose }) => {
                   <ChevronLeft className="h-6 w-6" />
                 </button>
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">Edit Produce</h1>
+                  <h1 className="text-3xl font-bold text-gray-900">
+                    {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Edit Machinery' : 'Edit Produce'}
+                  </h1>
 
                 </div>
               </div>
@@ -293,7 +315,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
                       <div className="flex items-center space-x-3 mb-2">
                         <h3 className="text-lg font-semibold text-gray-900">{produce.name}</h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(produce.grade)}`}>
-                          Grade {produce.grade}
+                          {produce.produceType == PRODUCE_TYPES.MACHINERY ? `Condition: ${produce.grade}` : `Grade ${produce.grade}`}
                         </span>
                       </div>
                       <div className="flex items-center space-x-6 text-sm text-gray-600">
@@ -303,18 +325,18 @@ const EditProduceModal = ({ produceId, onClose }) => {
                         </div>
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 mr-1" />
-                          <span>Harvested {formatDate(produce.harvestTime)}</span>
+                          <span>{produce.produceType == PRODUCE_TYPES.MACHINERY ? 'Listed' : 'Harvested'} {formatDate(produce.harvestTime)}</span>
                         </div>
                         <div className="flex items-center">
                           <Package className="h-4 w-4 mr-1" />
-                          <span>{produce.availableQuantityKg} kg available</span>
+                          <span>{produce.availableQuantityKg} {produce.produceType == PRODUCE_TYPES.MACHINERY ? 'units' : 'kg'} available</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-lg font-bold text-green-600">
-                      {formatPrice(produce.currentPrice)} ETH/kg
+                      {formatPrice(produce.currentPrice)} ETH{produce.produceType == PRODUCE_TYPES.MACHINERY ? '' : '/kg'}
                     </div>
                     <div className="text-sm text-gray-500">
                       Current Price
@@ -337,7 +359,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Produce Name *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Machinery Name *' : 'Produce Name *'}
                     </label>
                     <input
                       type="text"
@@ -351,7 +373,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Produce Type *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Item Type *' : 'Produce Type *'}
                     </label>
                     <select
                       name="produceType"
@@ -370,7 +392,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Grade *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Condition *' : 'Grade *'}
                     </label>
                     <select
                       name="grade"
@@ -379,11 +401,23 @@ const EditProduceModal = ({ produceId, onClose }) => {
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     >
-                      <option value="A+">A+ Grade</option>
-                      <option value="A">A Grade</option>
-                      <option value="B+">B+ Grade</option>
-                      <option value="B">B Grade</option>
-                      <option value="C">C Grade</option>
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? (
+                        <>
+                          <option value="Excellent">Excellent</option>
+                          <option value="Good">Good</option>
+                          <option value="Fair">Fair</option>
+                          <option value="Poor">Poor</option>
+                          <option value="For Parts">For Parts</option>
+                        </>
+                      ) : (
+                        <>
+                          <option value="A+">A+ Grade</option>
+                          <option value="A">A Grade</option>
+                          <option value="B+">B+ Grade</option>
+                          <option value="B">B Grade</option>
+                          <option value="C">C Grade</option>
+                        </>
+                      )}
                     </select>
                   </div>
                 </div>
@@ -395,7 +429,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Price per KG (ETH) *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Price (ETH) *' : 'Price per KG (ETH) *'}
                     </label>
                     <input
                       type="number"
@@ -410,7 +444,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Total Quantity (KG) *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Quantity (Units) *' : 'Total Quantity (KG) *'}
                     </label>
                     <input
                       type="number"
@@ -426,7 +460,9 @@ const EditProduceModal = ({ produceId, onClose }) => {
 
               {/* Quality Certification */}
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3">Quality Certification</h2>
+                <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3">
+                  {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Documentation' : 'Quality Certification'}
+                </h2>
 
                 {/* Current Certificate Display */}
                 {formData.labCertUri && (
@@ -438,7 +474,9 @@ const EditProduceModal = ({ produceId, onClose }) => {
                         </svg>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-blue-900 mb-1">Current Certificate</p>
+                        <p className="text-sm font-medium text-blue-900 mb-1">
+                          {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Current Documentation' : 'Current Certificate'}
+                        </p>
                         {/* <p className="text-xs text-blue-700 break-all mb-2">{formData.labCertUri}</p> */}
                         <a 
                           href={formData.labCertUri} 
@@ -449,7 +487,7 @@ const EditProduceModal = ({ produceId, onClose }) => {
                           <svg className="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
-                          View Current Certificate
+                          {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'View Current Documentation' : 'View Current Certificate'}
                         </a>
                       </div>
                     </div>
@@ -464,8 +502,11 @@ const EditProduceModal = ({ produceId, onClose }) => {
                     acceptedTypes=".pdf,.doc,.docx,image/*"
                     maxSize={50}
                     multiple={false}
-                    label="Upload New Lab Certificate *"
-                    description="Upload a new quality certification document (PDF, DOC, DOCX, or image). This will replace the current certificate and be stored on IPFS via Pinata."
+                    label={formData.produceType == PRODUCE_TYPES.MACHINERY ? "Upload New Documentation *" : "Upload New Lab Certificate *"}
+                    description={formData.produceType == PRODUCE_TYPES.MACHINERY 
+                      ? "Upload new maintenance records, manual, or other documentation (PDF, DOC, DOCX, or image). This will replace the current documentation and be stored on IPFS via Pinata."
+                      : "Upload a new quality certification document (PDF, DOC, DOCX, or image). This will replace the current certificate and be stored on IPFS via Pinata."
+                    }
                   />
                   {/* {certificateUploaded && formData.labCertUri && (
                     <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
@@ -499,7 +540,10 @@ const EditProduceModal = ({ produceId, onClose }) => {
                   disabled={isSubmitting || isConfirming || !formData.labCertUri}
                   className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
                 >
-                  {isSubmitting || isConfirming ? 'Updating...' : 'Update Produce'}
+                  {isSubmitting || isConfirming 
+                    ? 'Updating...' 
+                    : (formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Update Machinery' : 'Update Produce')
+                  }
                 </button>
               </div>
             </form>

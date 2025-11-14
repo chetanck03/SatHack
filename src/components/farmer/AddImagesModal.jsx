@@ -222,7 +222,9 @@ const AddImagesModal = ({ produceId, onClose }) => {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-3">Images Updated Successfully!</h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">Your produce images have been updated on the blockchain and are now visible to buyers.</p>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Your {produce?.produceType === 9 ? 'machinery' : 'produce'} images have been updated on the blockchain and are now visible to buyers.
+            </p>
             <button
               onClick={onClose}
               className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
@@ -278,7 +280,7 @@ const AddImagesModal = ({ produceId, onClose }) => {
                       <div className="flex items-center space-x-3 mb-2">
                         <h3 className="text-lg font-semibold text-gray-900">{produce.name}</h3>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(produce.grade)}`}>
-                          Grade {produce.grade}
+                          {produce.produceType === 9 ? `Condition ${produce.grade}` : `Grade ${produce.grade}`}
                         </span>
                       </div>
                       <div className="flex items-center space-x-6 text-sm text-gray-600">
@@ -288,18 +290,18 @@ const AddImagesModal = ({ produceId, onClose }) => {
                         </div>
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 mr-1" />
-                          <span>Harvested {formatDate(produce.harvestTime)}</span>
+                          <span>{produce.produceType === 9 ? 'Listed' : 'Harvested'} {formatDate(produce.harvestTime)}</span>
                         </div>
                         <div className="flex items-center">
                           <Package className="h-4 w-4 mr-1" />
-                          <span>{produce.totalQuantityKg} kg total</span>
+                          <span>{produce.totalQuantityKg} {produce.produceType === 9 ? 'units' : 'kg'} total</span>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="text-right">
                     <div className="text-lg font-bold text-green-600">
-                      {formatPrice(produce.currentPrice)} ETH/kg
+                      {formatPrice(produce.currentPrice)} ETH{produce.produceType === 9 ? '' : '/kg'}
                     </div>
                   </div>
                 </div>
@@ -353,8 +355,11 @@ const AddImagesModal = ({ produceId, onClose }) => {
                   acceptedTypes="image/*"
                   maxSize={25}
                   multiple={true}
-                  label="Product Images"
-                  description="Upload high-quality images of your produce. Multiple images help buyers make informed decisions. Files will be stored on IPFS via Pinata."
+                  label={produce?.produceType === 9 ? "Equipment Images" : "Product Images"}
+                  description={produce?.produceType === 9 
+                    ? "Upload high-quality images of your machinery. Include photos from multiple angles, close-ups of important features, and any wear or damage to help buyers make informed decisions. Files will be stored on IPFS via Pinata."
+                    : "Upload high-quality images of your produce. Multiple images help buyers make informed decisions. Files will be stored on IPFS via Pinata."
+                  }
                 />
 
                 {/* Show uploaded images preview */}

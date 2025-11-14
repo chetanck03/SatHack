@@ -62,7 +62,8 @@ export const PRODUCE_TYPES = {
   SPICE: 6,
   NUT: 7,
   SEED: 8,
-  OTHER: 9
+  MACHINERY: 9, // Using "Other" slot for machinery
+  OTHER: 9 // Same as machinery for now
 }
 
 // Produce type labels for UI
@@ -76,7 +77,7 @@ export const PRODUCE_TYPE_LABELS = {
   [PRODUCE_TYPES.SPICE]: 'Spice',
   [PRODUCE_TYPES.NUT]: 'Nut',
   [PRODUCE_TYPES.SEED]: 'Seed',
-  [PRODUCE_TYPES.OTHER]: 'Other'
+  [PRODUCE_TYPES.MACHINERY]: 'Machinery'
 }
 
 // Network information (ordered by priority: Ethereum Sepolia -> Polygon -> Base)

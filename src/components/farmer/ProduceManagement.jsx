@@ -154,25 +154,25 @@ const ProduceManagement = () => {
                   </span>
                 </div>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getGradeColor(produce.grade)}`}>
-                  Grade {produce.grade}
+                  {produce.produceType === 9 ? `Condition ${produce.grade}` : `Grade ${produce.grade}`}
                 </span>
               </div>
 
               <div className="space-y-2 text-sm text-gray-600 mb-4">
                 <div className="flex justify-between">
                   <span>Available:</span>
-                  <span>{Number(produce.availableQuantityKg)} kg</span>
+                  <span>{Number(produce.availableQuantityKg)} {produce.produceType === 9 ? 'units' : 'kg'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Total:</span>
-                  <span>{Number(produce.totalQuantityKg)} kg</span>
+                  <span>{Number(produce.totalQuantityKg)} {produce.produceType === 9 ? 'units' : 'kg'}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Price:</span>
-                  <span>{formatPrice(produce.currentPrice)} ETH/kg</span>
+                  <span>{formatPrice(produce.currentPrice)} ETH{produce.produceType === 9 ? '' : '/kg'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Farm:</span>
+                  <span>{produce.produceType == 9 ? 'Owner:' : 'Farm:'}</span>
                   <span className="truncate ml-2">{produce.originFarm}</span>
                 </div>
               </div>

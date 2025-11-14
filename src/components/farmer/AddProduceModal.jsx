@@ -41,10 +41,23 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormData(prev => {
+      const newData = {
+        ...prev,
+        [name]: value
+      }
+      
+      // When switching to machinery, set default condition
+      if (name === 'produceType' && value == PRODUCE_TYPES.MACHINERY) {
+        newData.grade = 'Good'
+      }
+      // When switching away from machinery, set default grade
+      else if (name === 'produceType' && prev.produceType == PRODUCE_TYPES.MACHINERY && value != PRODUCE_TYPES.MACHINERY) {
+        newData.grade = 'A'
+      }
+      
+      return newData
+    })
   }
 
   const handleCertificateUpload = (uploadResult) => {
@@ -134,8 +147,15 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-3">Produce Added Successfully!</h3>
-            <p className="text-gray-600 mb-8 leading-relaxed">Your produce has been registered on the blockchain. You can now add images to showcase your produce.</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
+              {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Machinery Listed Successfully!' : 'Produce Added Successfully!'}
+            </h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              {formData.produceType == PRODUCE_TYPES.MACHINERY 
+                ? 'Your machinery has been listed on the blockchain. You can now add images to showcase your equipment.'
+                : 'Your produce has been registered on the blockchain. You can now add images to showcase your produce.'
+              }
+            </p>
             <button
               onClick={() => {
                 onClose()
@@ -165,7 +185,9 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </button>
-                <h1 className="text-3xl font-bold text-gray-900">Add New Produce</h1>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'List New Machinery' : 'Add New Produce'}
+                </h1>
               </div>
               <div className="flex items-center space-x-4">
 
@@ -191,7 +213,7 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Produce Name *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Machinery Name *' : 'Produce Name *'}
                     </label>
                     <input
                       type="text"
@@ -200,13 +222,13 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="e.g., Organic Tomatoes"
+                      placeholder={formData.produceType == PRODUCE_TYPES.MACHINERY ? "e.g., John Deere Tractor 5075E" : "e.g., Organic Tomatoes"}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Produce Type *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Item Type *' : 'Produce Type *'}
                     </label>
                     <select
                       name="produceType"
@@ -225,7 +247,7 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Origin Farm *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Owner/Seller *' : 'Origin Farm *'}
                     </label>
                     <input
                       type="text"
@@ -234,7 +256,7 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="e.g., Green Valley Farm"
+                      placeholder={formData.produceType == PRODUCE_TYPES.MACHINERY ? "e.g., John's Farm Equipment" : "e.g., Green Valley Farm"}
                     />
                   </div>
                 </div>
@@ -246,7 +268,7 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Grade *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Condition *' : 'Grade *'}
                     </label>
                     <select
                       name="grade"
@@ -255,17 +277,29 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     >
-                      <option value="A+">A+ Grade</option>
-                      <option value="A">A Grade</option>
-                      <option value="B+">B+ Grade</option>
-                      <option value="B">B Grade</option>
-                      <option value="C">C Grade</option>
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? (
+                        <>
+                          <option value="Excellent">Excellent</option>
+                          <option value="Good">Good</option>
+                          <option value="Fair">Fair</option>
+                          <option value="Poor">Poor</option>
+                          <option value="For Parts">For Parts</option>
+                        </>
+                      ) : (
+                        <>
+                          <option value="A+">A+ Grade</option>
+                          <option value="A">A Grade</option>
+                          <option value="B+">B+ Grade</option>
+                          <option value="B">B Grade</option>
+                          <option value="C">C Grade</option>
+                        </>
+                      )}
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Price per KG (ETH) *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Price (ETH) *' : 'Price per KG (ETH) *'}
                     </label>
                     <input
                       type="number"
@@ -275,13 +309,13 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="0.01"
+                      placeholder={formData.produceType == PRODUCE_TYPES.MACHINERY ? "5.0" : "0.01"}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Total Quantity (KG) *
+                      {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Quantity (Units) *' : 'Total Quantity (KG) *'}
                     </label>
                     <input
                       type="number"
@@ -290,23 +324,28 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="100"
+                      placeholder={formData.produceType == PRODUCE_TYPES.MACHINERY ? "1" : "100"}
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Lab Certificate */}
+              {/* Certificate/Documentation */}
               <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3">Quality Certification</h2>
+                <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-3">
+                  {formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Documentation' : 'Quality Certification'}
+                </h2>
                 <FileUpload
                   onUploadSuccess={handleCertificateUpload}
                   onUploadError={handleCertificateUploadError}
                   acceptedTypes=".pdf,.doc,.docx,image/*"
                   maxSize={50}
                   multiple={false}
-                  label="Lab Certificate *"
-                  description="Upload your quality certification document (PDF, DOC, DOCX, or image). This will be stored on IPFS via Pinata."
+                  label={formData.produceType == PRODUCE_TYPES.MACHINERY ? "Maintenance Records/Manual *" : "Lab Certificate *"}
+                  description={formData.produceType == PRODUCE_TYPES.MACHINERY 
+                    ? "Upload maintenance records, manual, or other documentation (PDF, DOC, DOCX, or image). This will be stored on IPFS via Pinata."
+                    : "Upload your quality certification document (PDF, DOC, DOCX, or image). This will be stored on IPFS via Pinata."
+                  }
                 />
                 {/* {certificateUploaded && formData.labCertUri && (
                   <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
@@ -329,8 +368,10 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
               <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
                 <h4 className="font-semibold text-blue-900 mb-3 text-lg">📸 About Product Images</h4>
                 <p className="text-blue-800">
-                  After creating your produce, you'll be able to add images to showcase your product.
-                  This helps buyers make informed decisions and increases your sales potential.
+                  {formData.produceType == PRODUCE_TYPES.MACHINERY 
+                    ? "After listing your machinery, you'll be able to add images to showcase your equipment. Include photos from multiple angles, close-ups of important features, and any wear or damage to help buyers make informed decisions."
+                    : "After creating your produce, you'll be able to add images to showcase your product. This helps buyers make informed decisions and increases your sales potential."
+                  }
                 </p>
               </div>
 
@@ -348,7 +389,10 @@ const AddProduceModal = ({ onClose, onSuccess }) => {
                   disabled={isSubmitting || isConfirming || !certificateUploaded}
                   className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-8 py-3 rounded-lg font-semibold transition-colors text-lg"
                 >
-                  {isSubmitting || isConfirming ? 'Adding Produce...' : 'Add Produce'}
+                  {isSubmitting || isConfirming 
+                    ? (formData.produceType == PRODUCE_TYPES.MACHINERY ? 'Listing Machinery...' : 'Adding Produce...')
+                    : (formData.produceType == PRODUCE_TYPES.MACHINERY ? 'List Machinery' : 'Add Produce')
+                  }
                 </button>
               </div>
             </form>

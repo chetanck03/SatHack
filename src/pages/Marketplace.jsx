@@ -83,7 +83,8 @@ const Marketplace = () => {
     { label: '🐟 Seafood', value: '5' },
     { label: '🌿 Herbs', value: '6' },
     { label: '🥜 Nuts', value: '7' },
-    { label: '🍯 Other', value: '8' }
+    { label: '🌱 Seeds', value: '8' },
+    { label: '🚜 Machinery', value: '9' }
   ]
   const priceRanges = [
     { label: 'Under 0.01 ETH', value: '0-0.01' },

@@ -1,0 +1,1490 @@
+// Agricultural Schemes Knowledge Base and Prompt Structure
+
+const agriculturalSchemesKB = {
+  research_centers_and_certification: {
+    "Andhra_Pradesh": {
+      state: "Andhra Pradesh",
+      centers: [
+        {
+          name: "Acharya N.G. Ranga Agricultural University",
+          location: "Hyderabad",
+          type: "Agricultural University",
+          services: ["Research", "Training", "Crop guidance", "Technology transfer"],
+          website: "https://angrau.ac.in/"
+        },
+        {
+          name: "Regional Agricultural Research Station",
+          location: "Tirupati",
+          type: "Research Station",
+          services: ["Crop research", "Variety development", "Field trials"],
+          website: "http://www.rarstpt.org/"
+        },
+        {
+          name: "KVK (ANGRAU)",
+          location: "Lambasingi (Visakhapatnam)",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farm advisory", "Soil testing"],
+          website: "https://kvk.icar.gov.in/"
+        },
+        {
+          name: "Andhra Pradesh State Seed Certification Agency",
+          location: "Guntur",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing", "Field inspection"],
+          website: "https://angrau.ac.in/"
+        }
+      ]
+    },
+    "Bihar": {
+      state: "Bihar",
+      centers: [
+        {
+          name: "Dr. Rajendra Prasad Central Agricultural University",
+          location: "Pusa",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Extension", "Crop technology"],
+          website: "https://www.rpcau.ac.in/"
+        },
+        {
+          name: "Bihar Agricultural University",
+          location: "Bhagalpur",
+          type: "Agricultural University",
+          services: ["Research", "Training", "Advisory services"],
+          website: "https://www.bausabour.ac.in/"
+        },
+        {
+          name: "Bihar State Seed & Organic Certification Agency",
+          location: "Patna",
+          type: "Certification Agency",
+          services: ["Seed certification", "Organic certification", "Quality assurance"],
+          website: "https://bssca.co.in/"
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Muzaffarpur",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Machinery certification", "Performance evaluation"],
+          website: "https://www.rpcau.ac.in/"
+        }
+      ]
+    },
+    "Chhattisgarh": {
+      state: "Chhattisgarh",
+      centers: [
+        {
+          name: "Directorate of Agricultural Engineering Testing Centre",
+          location: "Raipur",
+          type: "Testing Centre",
+          services: ["Machinery testing", "Equipment certification"],
+          website: "https://agriportal.cg.nic.in/"
+        },
+        {
+          name: "Indira Gandhi Krishi Vishwavidyalaya",
+          location: "Raipur",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Extension", "Crop advisory"],
+          website: "https://www.igkv.ac.in/"
+        },
+        {
+          name: "Chhattisgarh Certification Society (Organic)",
+          location: "Raipur",
+          type: "Certification Agency",
+          services: ["Organic certification", "PGS certification"],
+          website: "https://cgcert.com/"
+        },
+        {
+          name: "KVK",
+          location: "Bilaspur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"],
+          website: "http://www.kvkbilaspur.org/"
+        }
+      ]
+    },
+    "Delhi": {
+      state: "Delhi",
+      centers: [
+        {
+          name: "Indian Agricultural Research Institute (IARI)",
+          location: "New Delhi",
+          type: "Premier Research Institute",
+          services: ["Advanced research", "Variety development", "Training", "Patents", "Technology licensing"],
+          website: "https://www.iari.res.in/"
+        },
+        {
+          name: "National Centre of Organic Farming (NCOF)",
+          location: "Ghaziabad (Delhi NCR)",
+          type: "National Centre",
+          services: ["Organic farming promotion", "Certification guidance", "Training"],
+          website: "https://www.jaivikkheti.in/ncof"
+        },
+        {
+          name: "Farm Machinery Training & Testing Institute",
+          location: "Faridabad (NCR)",
+          type: "Testing Institute",
+          services: ["Machinery testing", "Training", "Certification"],
+          website: "https://fmttibudni.gov.in/"
+        },
+        {
+          name: "ICAR Headquarters Labs",
+          location: "New Delhi",
+          type: "Research Labs",
+          services: ["Patent assistance", "Technology transfer", "Research collaboration"],
+          website: "https://icar.org.in/"
+        }
+      ]
+    },
+    "Gujarat": {
+      state: "Gujarat",
+      centers: [
+        {
+          name: "College of Agricultural Engineering & Technology, JAU",
+          location: "Junagadh",
+          type: "College/Research Centre",
+          services: ["Engineering research", "Equipment development", "Training"],
+          website: "https://www.jau.in/"
+        },
+        {
+          name: "Anand Agricultural University",
+          location: "Anand",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Dairy technology", "Crop guidance"],
+          website: "https://www.aau.in/"
+        },
+        {
+          name: "Gujarat State Seed Certification Agency",
+          location: "Gandhinagar",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"],
+          website: "https://www.gssca.org/"
+        },
+        {
+          name: "KVK",
+          location: "Navsari",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"],
+          website: "http://www.kvknavsari.in/"
+        }
+      ]
+    },
+    "Haryana": {
+      state: "Haryana",
+      centers: [
+        {
+          name: "CCS Haryana Agricultural University",
+          location: "Hisar",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Variety development", "Extension"],
+          website: "https://hau.ac.in/"
+        },
+        {
+          name: "Haryana State Seed Certification Agency",
+          location: "Panchkula",
+          type: "Certification Agency",
+          services: ["Seed certification", "Field inspection", "Quality control"],
+          website: "http://www.hssca.org.in/"
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Hisar",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Performance evaluation", "Certification"],
+          website: "https://hau.ac.in/fmtc"
+        },
+        {
+          name: "KVK",
+          location: "Kurukshetra",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"],
+          website: "https://kvkkurukshetra.org/"
+        }
+      ]
+    },
+    "Jammu_Kashmir": {
+      state: "Jammu & Kashmir",
+      centers: [
+        {
+          name: "SKUAST-K",
+          location: "Srinagar",
+          type: "Agricultural University",
+          services: ["Research", "Training", "Kashmir valley crops", "Horticulture"],
+          website: "http://www.skuastkashmir.ac.in/"
+        },
+        {
+          name: "SKUAST-J",
+          location: "Jammu",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Crop guidance", "Extension"],
+          website: "http://www.skuast.org/"
+        },
+        {
+          name: "KVK",
+          location: "Bandipora",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farm advisory"],
+          website: "http://www.kvkbandipora.in/"
+        },
+        {
+          name: "KVK",
+          location: "Udhampur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer support"],
+          website: "http://kvkreasi.nic.in/"
+        }
+      ]
+    },
+    "Jharkhand": {
+      state: "Jharkhand",
+      centers: [
+        {
+          name: "Birsa Agricultural University",
+          location: "Ranchi",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Tribal farming systems", "Extension"],
+          website: "https://www.bau.ac.in/"
+        },
+        {
+          name: "Jharkhand Agricultural Machinery Testing & Training Centre",
+          location: "Ranchi",
+          type: "Testing & Training Centre",
+          services: ["Equipment testing", "Training", "Machinery certification"],
+          website: "https://www.bau.ac.in/"
+        },
+        {
+          name: "Jharkhand State Seed Certification Agency",
+          location: "Ranchi",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality assurance"],
+          website: "https://www.bau.ac.in/"
+        },
+        {
+          name: "KVK",
+          location: "Hazaribagh",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory services"],
+          website: "https://kvk.icar.gov.in/"
+        }
+      ]
+    },
+    "Karnataka": {
+      state: "Karnataka",
+      centers: [
+        {
+          name: "UAS, GKVK",
+          location: "Bangalore",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Technology development", "Patents"],
+          website: "https://uasbangalore.edu.in/"
+        },
+        {
+          name: "College of Agricultural Engineering, UAS",
+          location: "Raichur",
+          type: "Engineering College",
+          services: ["Engineering research", "Equipment development", "Training"],
+          website: "https://uasraichur.edu.in/"
+        },
+        {
+          name: "KVK",
+          location: "Mysuru",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"],
+          website: "https://kvk.icar.gov.in/"
+        },
+        {
+          name: "Karnataka State Seed Certification Agency",
+          location: "Bengaluru",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"],
+          website: "https://ksscaonline.karnataka.gov.in/"
+        }
+      ]
+    },
+    "Kerala": {
+      state: "Kerala",
+      centers: [
+        {
+          name: "Kerala Agricultural University",
+          location: "Thrissur",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Spices research", "Extension"],
+          website: "https://www.kau.in/"
+        },
+        {
+          name: "Farm Machinery Testing Centre, KCAET",
+          location: "Tavanur",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://fmtc.kau.in/"
+        },
+        {
+          name: "Kerala State Organic Certification Agency",
+          location: "Thiruvananthapuram",
+          type: "Certification Agency",
+          services: ["Organic certification", "PGS certification", "Quality assurance"],
+          website: "https://www.keralaorganic.org/"
+        },
+        {
+          name: "KVK",
+          location: "Alappuzha",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"],
+          website: "https://www.kvkidukki.org/"
+        }
+      ]
+    },
+    "Madhya_Pradesh": {
+      state: "Madhya Pradesh",
+      centers: [
+        {
+          name: "Central Institute of Agricultural Engineering",
+          location: "Bhopal",
+          type: "Premier Research Institute",
+          services: ["Advanced engineering research", "Equipment development", "Patents", "Technology licensing"],
+          website: "https://ciae.icar.gov.in/"
+        },
+        {
+          name: "Jawaharlal Nehru Krishi Vishwa Vidyalaya",
+          location: "Jabalpur",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Crop technology", "Extension"],
+          website: "http://www.jnkvv.org/"
+        },
+        {
+          name: "MP State Seed Certification Agency",
+          location: "Bhopal",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality control"],
+          website: "http://www.jnkvv.org/"
+        },
+        {
+          name: "KVK",
+          location: "Indore",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer support"],
+          website: "http://kvkindore.in/"
+        }
+      ]
+    },
+    "Maharashtra": {
+      state: "Maharashtra",
+      centers: [
+        {
+          name: "MPKV",
+          location: "Rahuri (Ahmednagar)",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Variety development", "Extension"],
+          website: "https://mpkv.ac.in/"
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Akola",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://pdkv.ac.in/"
+        },
+        {
+          name: "Maharashtra State Seed Certification Agency",
+          location: "Aurangabad",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"],
+          website: "https://mahabeej.co.in/"
+        },
+        {
+          name: "KVK",
+          location: "Nagpur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"],
+          website: "http://kvknagpur.org.in/"
+        }
+      ]
+    },
+    "Odisha": {
+      state: "Odisha",
+      centers: [
+        {
+          name: "CAET, OUAT",
+          location: "Bhubaneswar",
+          type: "College of Agricultural Engineering",
+          services: ["Engineering research", "Equipment development", "Training"],
+          website: "https://caet.ac.in/"
+        },
+        {
+          name: "Odisha State Organic Certification Agency",
+          location: "Bhubaneswar",
+          type: "Certification Agency",
+          services: ["Organic certification", "PGS certification"],
+          website: "https://osoca.nic.in/"
+        },
+        {
+          name: "KVK",
+          location: "Sambalpur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"],
+          website: "https://kvksambalpur.org/"
+        },
+        {
+          name: "Seed Certification Office",
+          location: "Berhampur",
+          type: "Certification Office",
+          services: ["Seed certification", "Quality assurance"],
+          website: "https://osoca.nic.in/"
+        }
+      ]
+    },
+    "Punjab": {
+      state: "Punjab",
+      centers: [
+        {
+          name: "PAU",
+          location: "Ludhiana",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Wheat research", "Technology development"],
+          website: "https://www.pau.edu/"
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Amritsar",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://ciphet.res.in/"
+        },
+        {
+          name: "Punjab State Seed Certification Authority",
+          location: "Mohali",
+          type: "Certification Authority",
+          services: ["Seed certification", "Quality control"],
+          website: "https://pssca.punjab.gov.in/"
+        },
+        {
+          name: "KVK",
+          location: "Bathinda",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"],
+          website: "https://kvkbathinda.com/"
+        }
+      ]
+    },
+    "Rajasthan": {
+      state: "Rajasthan",
+      centers: [
+        {
+          name: "Farm Implements & Machinery Testing Centre, SKRAU",
+          location: "Bikaner",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://raubikaner.org/"
+        },
+        {
+          name: "Rajasthan Agricultural Research Institute",
+          location: "Durgapura (Jaipur)",
+          type: "Research Institute",
+          services: ["Research", "Variety development", "Technology transfer"],
+          website: "http://raridurgapura.org/"
+        },
+        {
+          name: "Rajasthan State Seed Certification Agency",
+          location: "Jaipur",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"],
+          website: "https://rajseedcertagency.org/"
+        },
+        {
+          name: "KVK",
+          location: "Udaipur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer support"],
+          website: "http://udaipur.kvk2.in/"
+        }
+      ]
+    },
+    "Sikkim": {
+      state: "Sikkim",
+      centers: [
+        {
+          name: "College of Agricultural Engineering & PHT",
+          location: "Ranipool (Gangtok)",
+          type: "Engineering College",
+          services: ["Engineering research", "Post-harvest technology", "Training"],
+          website: "http://www.caepht.ac.in/"
+        },
+        {
+          name: "Sikkim Organic Certification Agency (SOCA)",
+          location: "Gangtok",
+          type: "Certification Agency",
+          services: ["Organic certification", "100% organic state support", "PGS certification"],
+          website: "https://www.ssoca.in/"
+        },
+        {
+          name: "KVK",
+          location: "East Sikkim",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Organic farming guidance"],
+          website: "https://kvk.icar.gov.in/aboutkvk.aspx?kvkid=J9937"
+        },
+        {
+          name: "State Level Seed Testing Lab",
+          location: "Gangtok",
+          type: "Testing Laboratory",
+          services: ["Seed testing", "Quality analysis"],
+          website: "https://www.ssoca.in/"
+        }
+      ]
+    },
+    "Tamil_Nadu": {
+      state: "Tamil Nadu",
+      centers: [
+        {
+          name: "Tamil Nadu Agricultural University",
+          location: "Coimbatore",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Variety development", "Extension"],
+          website: "https://tnau.ac.in/"
+        },
+        {
+          name: "Agricultural Machinery Testing Centre",
+          location: "Coimbatore",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://tnau.ac.in/site/agricultural-machinery-testing-centre/"
+        },
+        {
+          name: "Tamil Nadu Organic Certification Department",
+          location: "Chennai",
+          type: "Certification Department",
+          services: ["Organic certification", "Quality assurance", "PGS certification"],
+          website: "https://seedcertification.tn.gov.in/"
+        },
+        {
+          name: "KVK",
+          location: "Thanjavur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"],
+          website: "https://bmtkvk.org/"
+        }
+      ]
+    },
+    "Telangana": {
+      state: "Telangana",
+      centers: [
+        {
+          name: "ANGRAU",
+          location: "Hyderabad",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Technology development", "Extension"],
+          website: "https://angrau.ac.in/"
+        },
+        {
+          name: "Telangana State Seed Certification Agency",
+          location: "Hyderabad",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"],
+          website: "https://www.ssca.telangana.gov.in/"
+        },
+        {
+          name: "KVK",
+          location: "Karimnagar",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"],
+          website: "https://www.kvkkarimnagar.org/"
+        },
+        {
+          name: "Agricultural Machinery Testing Centre",
+          location: "Warangal",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://angrau.ac.in/"
+        }
+      ]
+    },
+    "Uttar_Pradesh": {
+      state: "Uttar Pradesh",
+      centers: [
+        {
+          name: "UP Council of Agricultural Research",
+          location: "Lucknow",
+          type: "Research Council",
+          services: ["Research coordination", "Technology development", "Extension"],
+          website: "https://icar.org.in/"
+        },
+        {
+          name: "State Seed Certification Agency",
+          location: "Aligarh",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality control"],
+          website: "https://upssca.in/"
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Jhansi",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"],
+          website: "https://rlbcau.ac.in/"
+        },
+        {
+          name: "KVK",
+          location: "Varanasi",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"],
+          website: "http://www.varanasi.kvk4.in/"
+        }
+      ]
+    },
+    "West_Bengal": {
+      state: "West Bengal",
+      centers: [
+        {
+          name: "IIT Kharagpur",
+          location: "Kharagpur",
+          type: "Institute of Technology",
+          services: ["Advanced research", "Agricultural engineering", "Innovation"],
+          website: "https://www.iitkgp.ac.in/"
+        },
+        {
+          name: "Bidhan Chandra Krishi Vishwavidyalaya",
+          location: "Mohanpur (Nadia)",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Rice research", "Extension"],
+          website: "https://www.bckv.edu.in/"
+        },
+        {
+          name: "West Bengal State Seed Certification Society",
+          location: "Kolkata",
+          type: "Certification Society",
+          services: ["Seed certification", "Quality testing"],
+          website: "https://wbsscl.com/"
+        },
+        {
+          name: "KVK",
+          location: "Darjeeling",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Tea & horticulture guidance"],
+          website: "https://kvk.icar.gov.in/"
+        }
+      ]
+    }
+  },centers: [
+        {
+          name: "Birsa Agricultural University",
+          location: "Ranchi",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Tribal farming systems", "Extension"]
+        },
+        {
+          name: "Jharkhand Agricultural Machinery Testing & Training Centre",
+          location: "Ranchi",
+          type: "Testing & Training Centre",
+          services: ["Equipment testing", "Training", "Machinery certification"]
+        },
+        {
+          name: "Jharkhand State Seed Certification Agency",
+          location: "Ranchi",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality assurance"]
+        },
+        {
+          name: "KVK",
+          location: "Hazaribagh",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory services"]
+        }
+      ]
+    },
+    "Karnataka": {
+      state: "Karnataka",
+      centers: [
+        {
+          name: "UAS, GKVK",
+          location: "Bangalore",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Technology development", "Patents"]
+        },
+        {
+          name: "College of Agricultural Engineering, UAS",
+          location: "Raichur",
+          type: "Engineering College",
+          services: ["Engineering research", "Equipment development", "Training"]
+        },
+        {
+          name: "KVK",
+          location: "Mysuru",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"]
+        },
+        {
+          name: "Karnataka State Seed Certification Agency",
+          location: "Bengaluru",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"]
+        }
+      ]
+    },
+    "Kerala": {
+      state: "Kerala",
+      centers: [
+        {
+          name: "Kerala Agricultural University",
+          location: "Thrissur",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Spices research", "Extension"]
+        },
+        {
+          name: "Farm Machinery Testing Centre, KCAET",
+          location: "Tavanur",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        },
+        {
+          name: "Kerala State Organic Certification Agency",
+          location: "Thiruvananthapuram",
+          type: "Certification Agency",
+          services: ["Organic certification", "PGS certification", "Quality assurance"]
+        },
+        {
+          name: "KVK",
+          location: "Alappuzha",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"]
+        }
+      ]
+    },
+    "Madhya_Pradesh": {
+      state: "Madhya Pradesh",
+      centers: [
+        {
+          name: "Central Institute of Agricultural Engineering",
+          location: "Bhopal",
+          type: "Premier Research Institute",
+          services: ["Advanced engineering research", "Equipment development", "Patents", "Technology licensing"]
+        },
+        {
+          name: "Jawaharlal Nehru Krishi Vishwa Vidyalaya",
+          location: "Jabalpur",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Crop technology", "Extension"]
+        },
+        {
+          name: "MP State Seed Certification Agency",
+          location: "Bhopal",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality control"]
+        },
+        {
+          name: "KVK",
+          location: "Indore",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer support"]
+        }
+      ]
+    },
+    "Maharashtra": {
+      state: "Maharashtra",
+      centers: [
+        {
+          name: "MPKV",
+          location: "Rahuri (Ahmednagar)",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Variety development", "Extension"]
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Akola",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        },
+        {
+          name: "Maharashtra State Seed Certification Agency",
+          location: "Aurangabad",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"]
+        },
+        {
+          name: "KVK",
+          location: "Nagpur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"]
+        }
+      ]
+    },
+    "Odisha": {
+      state: "Odisha",
+      centers: [
+        {
+          name: "CAET, OUAT",
+          location: "Bhubaneswar",
+          type: "College of Agricultural Engineering",
+          services: ["Engineering research", "Equipment development", "Training"]
+        },
+        {
+          name: "Odisha State Organic Certification Agency",
+          location: "Bhubaneswar",
+          type: "Certification Agency",
+          services: ["Organic certification", "PGS certification"]
+        },
+        {
+          name: "KVK",
+          location: "Sambalpur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"]
+        },
+        {
+          name: "Seed Certification Office",
+          location: "Berhampur",
+          type: "Certification Office",
+          services: ["Seed certification", "Quality assurance"]
+        }
+      ]
+    },
+    "Punjab": {
+      state: "Punjab",
+      centers: [
+        {
+          name: "PAU",
+          location: "Ludhiana",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Wheat research", "Technology development"]
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Amritsar",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        },
+        {
+          name: "Punjab State Seed Certification Authority",
+          location: "Mohali",
+          type: "Certification Authority",
+          services: ["Seed certification", "Quality control"]
+        },
+        {
+          name: "KVK",
+          location: "Bathinda",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"]
+        }
+      ]
+    },
+    "Rajasthan": {
+      state: "Rajasthan",
+      centers: [
+        {
+          name: "Farm Implements & Machinery Testing Centre, SKRAU",
+          location: "Bikaner",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        },
+        {
+          name: "Rajasthan Agricultural Research Institute",
+          location: "Durgapura (Jaipur)",
+          type: "Research Institute",
+          services: ["Research", "Variety development", "Technology transfer"]
+        },
+        {
+          name: "Rajasthan State Seed Certification Agency",
+          location: "Jaipur",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"]
+        },
+        {
+          name: "KVK",
+          location: "Udaipur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer support"]
+        }
+      ]
+    },
+    "Sikkim": {
+      state: "Sikkim",
+      centers: [
+        {
+          name: "College of Agricultural Engineering & PHT",
+          location: "Ranipool (Gangtok)",
+          type: "Engineering College",
+          services: ["Engineering research", "Post-harvest technology", "Training"]
+        },
+        {
+          name: "Sikkim Organic Certification Agency (SOCA)",
+          location: "Gangtok",
+          type: "Certification Agency",
+          services: ["Organic certification", "100% organic state support", "PGS certification"]
+        },
+        {
+          name: "KVK",
+          location: "East Sikkim",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Organic farming guidance"]
+        },
+        {
+          name: "State Level Seed Testing Lab",
+          location: "Gangtok",
+          type: "Testing Laboratory",
+          services: ["Seed testing", "Quality analysis"]
+        }
+      ]
+    },
+    "Tamil_Nadu": {
+      state: "Tamil Nadu",
+      centers: [
+        {
+          name: "Tamil Nadu Agricultural University",
+          location: "Coimbatore",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Variety development", "Extension"]
+        },
+        {
+          name: "Agricultural Machinery Testing Centre",
+          location: "Coimbatore",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        },
+        {
+          name: "Tamil Nadu Organic Certification Department",
+          location: "Chennai",
+          type: "Certification Department",
+          services: ["Organic certification", "Quality assurance", "PGS certification"]
+        },
+        {
+          name: "KVK",
+          location: "Thanjavur",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"]
+        }
+      ]
+    },
+    "Telangana": {
+      state: "Telangana",
+      centers: [
+        {
+          name: "ANGRAU",
+          location: "Hyderabad",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Technology development", "Extension"]
+        },
+        {
+          name: "Telangana State Seed Certification Agency",
+          location: "Hyderabad",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality testing"]
+        },
+        {
+          name: "KVK",
+          location: "Karimnagar",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Farmer guidance"]
+        },
+        {
+          name: "Agricultural Machinery Testing Centre",
+          location: "Warangal",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        }
+      ]
+    },
+    "Uttar_Pradesh": {
+      state: "Uttar Pradesh",
+      centers: [
+        {
+          name: "UP Council of Agricultural Research",
+          location: "Lucknow",
+          type: "Research Council",
+          services: ["Research coordination", "Technology development", "Extension"]
+        },
+        {
+          name: "State Seed Certification Agency",
+          location: "Aligarh",
+          type: "Certification Agency",
+          services: ["Seed certification", "Quality control"]
+        },
+        {
+          name: "Farm Machinery Testing Centre",
+          location: "Jhansi",
+          type: "Testing Centre",
+          services: ["Equipment testing", "Certification", "Performance evaluation"]
+        },
+        {
+          name: "KVK",
+          location: "Varanasi",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Advisory"]
+        }
+      ]
+    },
+    "West_Bengal": {
+      state: "West Bengal",
+      centers: [
+        {
+          name: "IIT Kharagpur",
+          location: "Kharagpur",
+          type: "Institute of Technology",
+          services: ["Advanced research", "Agricultural engineering", "Innovation"]
+        },
+        {
+          name: "Bidhan Chandra Krishi Vishwavidyalaya",
+          location: "Mohanpur (Nadia)",
+          type: "Agricultural University",
+          services: ["Research", "Education", "Rice research", "Extension"]
+        },
+        {
+          name: "West Bengal State Seed Certification Society",
+          location: "Kolkata",
+          type: "Certification Society",
+          services: ["Seed certification", "Quality testing"]
+        },
+        {
+          name: "KVK",
+          location: "Darjeeling",
+          type: "Krishi Vigyan Kendra",
+          services: ["Training", "Demonstrations", "Tea & horticulture guidance"]
+        }
+      ]
+    }
+  },
+  
+  central_schemes: {
+    "PM-KISAN": {
+      full_name: "Pradhan Mantri Kisan Samman Nidhi",
+      description: "Direct income support scheme providing ₹6,000 per year to all landholding farmers in three equal installments of ₹2,000 each.",
+      eligibility: "All landholding farmers families (small and marginal farmers initially, now extended to all farmers)",
+      benefits: "₹6,000 per year in three installments directly to bank accounts",
+      application: "Through Common Service Centers (CSCs) or online portal pmkisan.gov.in",
+      launched: "February 2019"
+    },
+    "PMFBY": {
+      full_name: "Pradhan Mantri Fasal Bima Yojana",
+      description: "Comprehensive crop insurance scheme protecting farmers against crop loss due to natural calamities, pests, and diseases.",
+      eligibility: "All farmers including sharecroppers and tenant farmers",
+      benefits: "Insurance coverage for all stages of crop cycle. Premium: 2% for Kharif, 1.5% for Rabi, 5% for commercial/horticultural crops",
+      application: "Through banks, CSCs, insurance companies, or online portal pmfby.gov.in",
+      launched: "January 2016"
+    },
+    "ISS": {
+      full_name: "Interest Subvention Scheme",
+      description: "Provides short-term crop loans up to ₹3 lakh at subsidized interest rates to farmers.",
+      eligibility: "Farmers availing crop loans from banks",
+      benefits: "2% interest subvention + 3% prompt repayment incentive = effective 4% interest rate",
+      application: "Through lending banks and cooperative societies",
+      launched: "Ongoing since 2006-07"
+    },
+    "AIF": {
+      full_name: "Agriculture Infrastructure Fund",
+      description: "Financing facility for investment in post-harvest management and community farming assets.",
+      eligibility: "Farmers, FPOs, Agri-entrepreneurs, Cooperatives, Self Help Groups",
+      benefits: "₹1 lakh crore financing with 3% interest subvention and credit guarantee coverage",
+      application: "Through banks and financial institutions",
+      launched: "August 2020"
+    },
+    "NBHM": {
+      full_name: "National Beekeeping & Honey Mission",
+      description: "Promotes scientific beekeeping and honey production to increase farmers' income.",
+      eligibility: "Beekeepers, farmers, entrepreneurs",
+      benefits: "Financial assistance for bee colonies, equipment, training, and infrastructure",
+      application: "Through State Agriculture Departments",
+      launched: "Part of Atmanirbhar Bharat Package"
+    },
+    "FPO_Promotion": {
+      full_name: "Farmer Producer Organizations Formation & Promotion",
+      description: "Support for formation and promotion of 10,000 new FPOs with financial assistance of ₹18 lakh per FPO over 5 years.",
+      eligibility: "Groups of farmers forming FPOs",
+      benefits: "Financial support, capacity building, marketing assistance, credit linkage",
+      application: "Through NABARD, SFAC, and implementing agencies",
+      launched: "2020"
+    },
+    "NMEO-OP": {
+      full_name: "National Mission on Edible Oils – Oil Palm",
+      description: "Increase domestic edible oil production by promoting oil palm cultivation.",
+      eligibility: "Farmers in suitable agro-climatic regions",
+      benefits: "Financial assistance for planting material, maintenance, intercropping, price assurance",
+      application: "Through State Nodal Departments",
+      launched: "August 2021"
+    },
+    "PKVY": {
+      full_name: "Paramparagat Krishi Vikas Yojana",
+      description: "Promotes organic farming through cluster approach and PGS certification.",
+      eligibility: "Farmers willing to adopt organic farming",
+      benefits: "₹50,000 per hectare over 3 years including certification costs",
+      application: "Through State Agriculture Departments in cluster formation",
+      launched: "2015-16"
+    },
+    "RKVY": {
+      full_name: "Rashtriya Krishi Vikas Yojana",
+      description: "State Plan Scheme providing flexibility to states for agriculture development programs.",
+      eligibility: "Implemented by State Governments",
+      benefits: "Funding for agriculture infrastructure, innovation, and farmer welfare activities",
+      application: "State-level implementation through Agriculture Departments",
+      launched: "2007 (RKVY-RAFTAAR from 2017)"
+    },
+    "NFSM": {
+      full_name: "National Food Security Mission",
+      description: "Increases production of rice, wheat, pulses, coarse cereals, and commercial crops through area expansion and productivity enhancement.",
+      eligibility: "Farmers in mission districts",
+      benefits: "Subsidized seeds, inputs, farm equipment, training, and demonstrations",
+      application: "Through State Agriculture Departments and Krishi Vigyan Kendras",
+      launched: "2007-08"
+    },
+    "NMSA": {
+      full_name: "National Mission for Sustainable Agriculture",
+      description: "Promotes sustainable agriculture practices including soil health, water conservation, and rainfed area development.",
+      eligibility: "All farmers, particularly in rainfed and vulnerable regions",
+      benefits: "Support for soil testing, organic farming, water conservation structures, climate-resilient practices",
+      application: "Through State Agriculture/Horticulture Departments",
+      launched: "2014-15"
+    },
+    "Matsya_Sampada": {
+      full_name: "Pradhan Mantri Matsya Sampada Yojana",
+      description: "Sustainable development of fisheries sector with focus on doubling fishers' income.",
+      eligibility: "Fishers, fish farmers, fish workers, SHGs, FPOs",
+      benefits: "Financial assistance for infrastructure, inputs, insurance, marketing, and value addition",
+      application: "Through Department of Fisheries and State Fisheries Departments",
+      launched: "September 2020"
+    },
+    "Agri_Mechanization": {
+      full_name: "Sub-Mission on Agricultural Mechanization",
+      description: "Promotes farm mechanization to increase productivity and reduce drudgery.",
+      eligibility: "Individual farmers, FPOs, Cooperatives, Self Help Groups",
+      benefits: "40-50% subsidy on agricultural machinery and equipment (higher for SC/ST/Women)",
+      application: "Through State Agriculture Departments and online portals",
+      launched: "Ongoing under various schemes"
+    }
+  },
+  
+  state_schemes_examples: {
+    "Rythu_Bandhu": {
+      state: "Telangana",
+      description: "Direct investment support of ₹5,000 per acre per season to farmers for agricultural inputs.",
+      eligibility: "All landholding farmers in Telangana",
+      benefits: "₹10,000 per acre per year (₹5,000 per season for 2 seasons)",
+      launched: "2018"
+    },
+    "Rythu_Bharosa": {
+      state: "Andhra Pradesh",
+      description: "Similar to Rythu Bandhu, provides ₹13,500 per year to farmers.",
+      eligibility: "All landholding farmers in Andhra Pradesh",
+      benefits: "₹13,500 per year in three installments",
+      launched: "2022"
+    },
+    "Krishi_Rin_Mafi": {
+      state: "Various States",
+      description: "Farm loan waiver schemes announced by different state governments.",
+      eligibility: "Small and marginal farmers with outstanding crop loans",
+      benefits: "Complete or partial waiver of crop loans",
+      note: "Schemes vary by state and are announced periodically"
+    },
+    "Mukhyamantri_Kisan_Kalyan": {
+      state: "Madhya Pradesh",
+      description: "Income support and loan waiver for farmers.",
+      eligibility: "Small and marginal farmers of Madhya Pradesh",
+      benefits: "Direct financial assistance and loan relief",
+      launched: "State-specific implementation"
+    },
+    "State_Input_Subsidies": {
+      description: "State-level subsidies on seeds, fertilizers, pesticides, and irrigation equipment",
+      coverage: "Varies by state",
+      benefits: "20-50% subsidy on certified seeds, fertilizers, micronutrients, bio-pesticides",
+      application: "Through State Agriculture Departments and designated centers"
+    },
+    "Micro_Irrigation": {
+      description: "State subsidies for drip and sprinkler irrigation systems under PMKSY",
+      benefits: "40-55% subsidy (higher for SC/ST/Small farmers), water savings of 30-70%",
+      application: "Through State Agriculture Departments and PMKSY portals"
+    },
+    "Soil_Health_Card": {
+      description: "Free soil testing and health card distribution to farmers",
+      benefits: "Customized fertilizer recommendations, reduced input costs, improved yields",
+      application: "Through Soil Testing Laboratories and Agriculture Departments"
+    }
+  }
+};
+
+// Chatbot System Prompt Structure
+const systemPrompt = `You are an expert agricultural schemes advisor for India, specializing in both central and state-level farming schemes, subsidies, support programs, research centers, and certification agencies.
+
+Your primary role is to:
+1. Help farmers understand and access various agricultural schemes
+2. Provide accurate information about eligibility, benefits, and application processes
+3. Guide farmers to nearest research stations, KVKs, and certification agencies
+4. Assist with crop information, patents, and certification processes
+5. Explain schemes in simple, farmer-friendly language (Hindi/English/Regional languages)
+6. Direct farmers to appropriate centers for technical support and innovation
+7. Assist with documentation and application procedures
+
+KNOWLEDGE BASE:
+You have comprehensive knowledge of:
+
+RESEARCH CENTERS & CERTIFICATION AGENCIES (State-wise):
+Each state has Agricultural Universities, Research Stations, Krishi Vigyan Kendras (KVKs), Seed Certification Agencies, and Farm Machinery Testing Centres where farmers can:
+- Get crop-specific information and guidance
+- Access latest agricultural research and technologies
+- Apply for patents on agricultural innovations
+- Obtain seed and organic certifications
+- Test and certify farm machinery and equipment
+- Receive training and demonstrations
+- Get soil testing and advisory services
+
+Available Centers by State:
+• Andhra Pradesh: ANGRAU Hyderabad, RARS Tirupati, KVK Lambasingi, Seed Cert. Guntur
+• Bihar: Dr. RPCAU Pusa, BAU Bhagalpur, Seed & Organic Cert. Patna, Machinery Test Muzaffarpur
+• Chhattisgarh: IGKV Raipur, Agri Engg Test Centre Raipur, Organic Cert. Raipur, KVK Bilaspur
+• Delhi/NCR: IARI New Delhi (Patents & Research), NCOF Ghaziabad, Farm Machinery Faridabad, ICAR Labs
+• Gujarat: JAU Junagadh, AAU Anand, Seed Cert. Gandhinagar, KVK Navsari
+• Haryana: CCSHAU Hisar, Seed Cert. Panchkula, Machinery Test Hisar, KVK Kurukshetra
+• J&K: SKUAST-K Srinagar, SKUAST-J Jammu, KVKs Bandipora & Udhampur
+• Jharkhand: BAU Ranchi, Machinery Test & Training Ranchi, Seed Cert. Ranchi, KVK Hazaribagh
+• Karnataka: UAS GKVK Bangalore, Agri Engg UAS Raichur, Seed Cert. Bengaluru, KVK Mysuru
+• Kerala: KAU Thrissur, Machinery Test KCAET Tavanur, Organic Cert. Thiruvananthapuram, KVK Alappuzha
+• MP: CIAE Bhopal (Premier Engineering), JNKVV Jabalpur, Seed Cert. Bhopal, KVK Indore
+• Maharashtra: MPKV Rahuri, Machinery Test Akola, Seed Cert. Aurangabad, KVK Nagpur
+• Odisha: CAET OUAT Bhubaneswar, Organic Cert. Bhubaneswar, Seed Cert. Berhampur, KVK Sambalpur
+• Punjab: PAU Ludhiana, Machinery Test Amritsar, Seed Cert. Mohali, KVK Bathinda
+• Rajasthan: Machinery Test SKRAU Bikaner, RARI Durgapura Jaipur, Seed Cert. Jaipur, KVK Udaipur
+• Sikkim: Agri Engg College Ranipool, SOCA Gangtok (Organic), Seed Testing Gangtok, KVK East Sikkim
+• Tamil Nadu: TNAU Coimbatore, Machinery Test Coimbatore, Organic Cert. Chennai, KVK Thanjavur
+• Telangana: ANGRAU Hyderabad, Seed Cert. Hyderabad, Machinery Test Warangal, KVK Karimnagar
+• UP: UPCAR Lucknow, Seed Cert. Aligarh, Machinery Test Jhansi, KVK Varanasi
+• West Bengal: IIT Kharagpur, BCKV Mohanpur, Seed Cert. Kolkata, KVK Darjeeling
+
+Services Available at These Centers:
+📚 Research & Information: Latest crop varieties, farming techniques, pest management
+🔬 Testing & Certification: Seed quality, organic certification, machinery performance
+📜 Patents & Innovation: Assistance with agricultural innovation patents, technology licensing
+🎓 Training & Demonstrations: Field days, workshops, hands-on training
+🌾 Crop Advisory: Soil testing, crop planning, input recommendations
+🛠️ Equipment Testing: Farm machinery certification and performance evaluation
+
+CENTRAL GOVERNMENT SCHEMES:
+- PM-KISAN: ₹6,000/year direct income support
+- PM-Fasal Bima Yojana: Comprehensive crop insurance
+- Interest Subvention Schemes: Subsidized agricultural credit
+- Agriculture Infrastructure Fund: ₹1 lakh crore for agri-infrastructure
+- National Beekeeping & Honey Mission: Beekeeping promotion
+- FPO Promotion: ₹18 lakh support per FPO over 5 years
+- NMEO-OP: Oil palm cultivation support
+- PKVY: Organic farming promotion (₹50,000/hectare)
+- RKVY: State-level agriculture development
+- NFSM: Food security and production enhancement
+- NMSA: Sustainable agriculture practices
+- Matsya Sampada: Fisheries sector development
+- Agricultural Mechanization: 40-50% subsidy on farm equipment
+
+STATE SCHEMES:
+- Rythu Bandhu (Telangana): ₹10,000/acre/year
+- Rythu Bharosa (Andhra Pradesh): ₹13,500/year
+- State input subsidies (seeds, fertilizers, irrigation)
+- Micro-irrigation subsidies (40-55% on drip/sprinkler)
+- Soil health and testing programs
+- Farm mechanization state subsidies
+- State-level crop insurance programs
+- Organic farming certification subsidies
+- Post-harvest infrastructure support
+- Market linkage and e-mandi platforms
+- Horticulture development schemes
+- Livestock and dairy schemes
+- Disaster relief and crop loss compensation
+
+COMMUNICATION GUIDELINES:
+1. Always ask about farmer's location (state/district) to provide relevant schemes AND nearest centers
+2. Inquire about farm size, crop type, and current challenges
+3. If farmer needs technical information, certification, or patents - direct them to nearest center
+4. Explain schemes in simple language without jargon
+5. Provide step-by-step application guidance
+6. Mention required documents clearly
+7. Share official website links and helpline numbers
+8. Highlight eligibility criteria upfront
+9. Calculate potential benefits for the farmer
+10. Suggest multiple applicable schemes
+11. Follow up with implementation tips
+12. For research/certification needs, provide complete center details with location
+
+RESPONSE STRUCTURE:
+- Greet warmly and understand farmer's needs
+- Ask clarifying questions about location and farm details
+- Recommend 2-3 most relevant schemes OR nearest research centers
+- Explain benefits in quantifiable terms (₹ amounts)
+- Provide clear application steps
+- Share contact information for further assistance
+- If technical support needed, list nearby KVKs, universities, or certification agencies
+- Offer to answer follow-up questions
+
+CENTER REFERRAL GUIDELINES:
+When farmers need:
+🔍 Crop information → Direct to nearest Agricultural University or KVK
+📜 Patents/Innovation → Refer to IARI Delhi, CIAE Bhopal, or state agricultural university
+✅ Seed Certification → State Seed Certification Agency
+🌱 Organic Certification → State Organic Certification Agency or NCOF
+🚜 Machinery Testing → Farm Machinery Testing Centre in their state
+🎓 Training → Nearest Krishi Vigyan Kendra (KVK)
+🧪 Soil Testing → KVK or District Agriculture Office
+
+Remember: Your goal is to empower farmers with knowledge, help them access maximum benefits from government schemes, and connect them with the right technical support centers for their specific needs.`;
+
+// Example conversation starters for different scenarios
+const conversationTemplates = {
+  income_support: {
+    user_query: "I need financial help for farming",
+    bot_response: "I can help you with income support schemes! Let me understand your situation:\n\n1. Which state are you farming in?\n2. How much land do you have (in acres)?\n3. Are you a landowner or tenant farmer?\n\nBased on your answers, I can suggest schemes like:\n- PM-KISAN (₹6,000/year for all farmers)\n- State schemes like Rythu Bandhu (₹10,000/acre in Telangana)\n- Credit schemes with subsidized interest rates"
+  },
+  
+  crop_insurance: {
+    user_query: "How can I protect my crops from loss?",
+    bot_response: "Crop insurance is crucial! The main scheme is PM-Fasal Bima Yojana (PMFBY):\n\n✓ Coverage: All stages of crop cycle\n✓ Premium: Very low (1.5-5% depending on season/crop)\n✓ Protection: Natural calamities, pests, diseases\n✓ Payment: Direct to bank account\n\nTo apply:\n1. Visit your bank where you have a crop loan\n2. Or apply online at pmfby.gov.in\n3. Or visit nearest CSC\n\nDo you have a specific crop in mind? I can give you exact premium details."
+  },
+  
+  loan_subsidy: {
+    user_query: "I need a farm loan with low interest",
+    bot_response: "Great! You can get agricultural credit at very low rates:\n\n📊 Interest Subvention Scheme:\n- Loans up to ₹3 lakh\n- 2% interest subvention\n- Additional 3% for prompt repayment\n- Effective interest: Just 4%!\n\nEligibility: Any farmer taking crop loan\nApply through: Your bank (commercial/cooperative/RRB)\n\n🏗️ For infrastructure needs:\nAgriculture Infrastructure Fund offers ₹1 lakh crore with 3% interest subvention and credit guarantee.\n\nWhich type of loan do you need?"
+  },
+  
+  organic_farming: {
+    user_query: "I want to start organic farming",
+    bot_response: "Excellent choice! Here's support available:\n\n🌱 Paramparagat Krishi Vikas Yojana (PKVY):\n- ₹50,000 per hectare over 3 years\n- Free organic certification (PGS)\n- Cluster-based approach\n- Training and handholding\n\n✓ Additional benefits:\n- Premium prices for organic produce\n- Better soil health\n- Reduced input costs over time\n\nSteps to join:\n1. Contact your District Agriculture Officer\n2. Join a nearby organic farming cluster\n3. Get training from Krishi Vigyan Kendra\n\nHow much land do you plan to convert to organic?"
+  },
+  
+  research_center_query: {
+    user_query: "Where can I get information about new crop varieties?",
+    bot_response: "I can help you find the right research center! First, let me know:\n\n1. Which state are you in?\n2. What crop are you interested in?\n3. Do you need: variety information, training, certification, or patent assistance?\n\nBased on your location, I'll guide you to:\n📍 Nearest Agricultural University\n📍 Krishi Vigyan Kendra (KVK)\n📍 Research Station\n\nThese centers provide:\n- Latest crop varieties and technologies\n- Free training and demonstrations\n- Soil testing services\n- Expert guidance"
+  },
+  
+  certification_query: {
+    user_query: "How do I get organic certification for my farm?",
+    bot_response: "Great decision to get certified! Here's how:\n\n📜 Organic Certification Process:\n\n1️⃣ Find your State Organic Certification Agency:\n   - I need to know your state to give exact location and website\n   - Alternative: National Centre of Organic Farming (NCOF), Ghaziabad - https://www.jaivikkheti.in/ncof\n\n2️⃣ Two certification types:\n   ✓ PGS (Participatory Guarantee System) - Free for small farmers\n   ✓ Third-party certification - For export markets\n\n3️⃣ Requirements:\n   - 3 years conversion period\n   - Maintain organic farming records\n   - Field inspection\n   - No synthetic chemicals\n\n4️⃣ Benefits:\n   - 20-30% premium price\n   - Access to organic markets\n   - Support under PKVY scheme (₹50,000/hectare)\n\nWhich state are you in? I'll give you the exact certification agency details with website link!"
+  },
+  
+  patent_query: {
+    user_query: "I have developed a new farming technique. How do I patent it?",
+    bot_response: "That's wonderful! Agricultural innovation is valuable. Here's guidance:\n\n🔬 For Agricultural Patents/Innovation:\n\n1️⃣ Premier Institutes for Patent Assistance:\n   📍 IARI (Indian Agricultural Research Institute), New Delhi\n   📍 CIAE (Central Institute of Agricultural Engineering), Bhopal\n   📍 ICAR Labs, New Delhi\n   📍 Your State Agricultural University\n\n2️⃣ Process:\n   - Document your innovation thoroughly\n   - Visit nearest agricultural university\n   - They have IPR (Intellectual Property Rights) cells\n   - Get technical validation\n   - File patent application\n\n3️⃣ What you need:\n   - Detailed description of innovation\n   - Proof of novelty\n   - Field trial data (if applicable)\n   - Working model/prototype\n\n4️⃣ Support Available:\n   - ICAR provides patent filing assistance\n   - Technology licensing opportunities\n   - Commercialization support\n\nWhich state are you in? I'll connect you with the nearest center that can help!"
+  },
+  
+  machinery_testing: {
+    user_query: "I want to test my farm equipment for certification",
+    bot_response: "Farm machinery testing and certification is important! Here's what you need:\n\n🚜 Farm Machinery Testing Centres (State-wise):\n\nI need to know your state to direct you to the nearest testing center. We have centers in:\n- Punjab: Amritsar\n- Haryana: Hisar\n- UP: Jhansi\n- Bihar: Muzaffarpur\n- Maharashtra: Akola\n- Tamil Nadu: Coimbatore\n- Telangana: Warangal\n...and more\n\n📋 Testing Services:\n- Performance evaluation\n- Safety certification\n- Fuel efficiency testing\n- Quality standards compliance\n- Subsidy eligibility certification\n\n🎯 Why test?\n- Required for subsidy schemes\n- Quality assurance\n- Market credibility\n- Technology validation\n\nWhich state are you in?"
+  }
+};
+
+// LangChain Integration Structure
+const langchainPromptTemplate = `
+import { ChatPromptTemplate } from "@langchain/core/prompts";
+
+const agriSchemesChatPrompt = ChatPromptTemplate.fromMessages([
+  ["system", \`${systemPrompt}\`],
+  ["human", "{user_message}"],
+  ["ai", "I understand you're asking about {topic}. Let me help you with that."],
+  ["human", "My location is {state}, I have {land_size} acres, and I grow {crop_type}"],
+]);
+
+// For conversational memory
+import { BufferMemory } from "langchain/memory";
+
+const memory = new BufferMemory({
+  returnMessages: true,
+  memoryKey: "chat_history",
+});
+
+// Complete chain setup
+import { ChatOpenAI } from "@langchain/openai";
+import { ConversationChain } from "langchain/chains";
+
+const model = new ChatOpenAI({
+  modelName: "gpt-4",
+  temperature: 0.7,
+});
+
+const chain = new ConversationChain({
+  llm: model,
+  prompt: agriSchemesChatPrompt,
+  memory: memory,
+});
+
+// Usage example
+async function askAboutScheme(userQuery) {
+  const response = await chain.call({
+    user_message: userQuery,
+  });
+  
+  return response.response;
+}
+`;
+
+// Helper function to find research centers by state
+function findCentersByState(state, centerType = null) {
+  const stateKey = state.replace(/\s+/g, '_');
+  const stateData = agriculturalSchemesKB.research_centers_and_certification[stateKey];
+  
+  if (!stateData) {
+    return { error: "State not found. Please check the state name." };
+  }
+  
+  if (centerType) {
+    return stateData.centers.filter(center => 
+      center.type.toLowerCase().includes(centerType.toLowerCase())
+    );
+  }
+  
+  return stateData.centers;
+}
+
+// Helper function to get center recommendations based on farmer needs
+function getCenterRecommendation(state, need) {
+  const centers = findCentersByState(state);
+  
+  if (centers.error) return centers;
+  
+  const recommendations = {
+    'crop_info': centers.filter(c => c.type.includes('University') || c.type.includes('KVK')),
+    'certification_seed': centers.filter(c => c.type.includes('Certification')),
+    'certification_organic': centers.filter(c => c.services.includes('Organic certification')),
+    'machinery_testing': centers.filter(c => c.type.includes('Testing Centre')),
+    'training': centers.filter(c => c.type.includes('KVK')),
+    'patent': centers.filter(c => c.type.includes('University') || c.type.includes('Institute')),
+    'research': centers.filter(c => c.type.includes('Research') || c.type.includes('University'))
+  };
+  
+  return recommendations[need] || centers;
+}
+
+// Example usage function
+function getChatbotResponse(userQuery, userState = null) {
+  // This would integrate with your LangChain chain
+  // Example logic:
+  
+  if (userQuery.toLowerCase().includes('certification')) {
+    const centers = getCenterRecommendation(userState, 'certification_seed');
+    return {
+      type: 'center_referral',
+      centers: centers,
+      message: `Here are the certification agencies in ${userState}:`
+    };
+  }
+  
+  if (userQuery.toLowerCase().includes('patent') || userQuery.toLowerCase().includes('innovation')) {
+    const centers = getCenterRecommendation(userState, 'patent');
+    return {
+      type: 'center_referral',
+      centers: centers,
+      message: `For patent and innovation support in ${userState}, contact:`
+    };
+  }
+  
+  if (userQuery.toLowerCase().includes('training') || userQuery.toLowerCase().includes('kvk')) {
+    const centers = getCenterRecommendation(userState, 'training');
+    return {
+      type: 'center_referral',
+      centers: centers,
+      message: `Krishi Vigyan Kendras (KVKs) in ${userState} for training:`
+    };
+  }
+  
+  // Default to scheme information
+  return {
+    type: 'scheme_info',
+    message: 'Let me help you with agricultural schemes...'
+  };
+}
+
+// Export for use in your backend
+module.exports = {
+  agriculturalSchemesKB,
+  systemPrompt,
+  conversationTemplates,
+  langchainPromptTemplate,
+  findCentersByState,
+  getCenterRecommendation,
+  getChatbotResponse
+};

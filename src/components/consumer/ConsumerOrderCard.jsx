@@ -219,11 +219,11 @@ const ConsumerOrderCard = ({ order, onStatusUpdate, activeFilter }) => {
                         <div className="space-y-1 text-sm text-gray-600">
                             <div className="flex items-center">
                                 <MapPin className="h-4 w-4 mr-1" />
-                                <span>{processedProduce.originFarm}</span>
+                                <span>{processedProduce.produceType === 9 ? 'Owner:' : 'Farm:'} {processedProduce.originFarm}</span>
                             </div>
                             <div className="flex items-center">
                                 <Package className="h-4 w-4 mr-1" />
-                                <span>Order: {Number(actualOrder.quantityKg) || 0} kg</span>
+                                <span>Order: {Number(actualOrder.quantityKg) || 0} {processedProduce.produceType === 9 ? 'units' : 'kg'}</span>
                             </div>
                             <div className="flex items-center">
                                 <User className="h-4 w-4 mr-1" />
@@ -231,11 +231,11 @@ const ConsumerOrderCard = ({ order, onStatusUpdate, activeFilter }) => {
                             </div>
                             <div className="flex items-center">
                                 <Package className="h-4 w-4 mr-1" />
-                                <span>Grade: {processedProduce.grade}</span>
+                                <span>{processedProduce.produceType === 9 ? 'Condition:' : 'Grade:'} {processedProduce.grade}</span>
                             </div>
                             <div className="flex items-center">
                                 <Package className="h-4 w-4 mr-1" />
-                                <span>Price per kg: {formatPrice(processedProduce.currentPrice)} ETH</span>
+                                <span>Price{processedProduce.produceType === 9 ? ':' : ' per kg:'} {formatPrice(processedProduce.currentPrice)} ETH</span>
                             </div>
                         </div>
                     </div>
@@ -251,7 +251,7 @@ const ConsumerOrderCard = ({ order, onStatusUpdate, activeFilter }) => {
                             Order #{order.id}
                         </div>
                         <div className="text-xs text-gray-500">
-                            Harvest: {processedProduce.harvestTime ? new Date(Number(processedProduce.harvestTime) * 1000).toLocaleDateString() : 'N/A'}
+                            {processedProduce.produceType === 9 ? 'Listed:' : 'Harvest:'} {processedProduce.harvestTime ? new Date(Number(processedProduce.harvestTime) * 1000).toLocaleDateString() : 'N/A'}
                         </div>
                     </div>
 
@@ -305,22 +305,22 @@ const ConsumerOrderCard = ({ order, onStatusUpdate, activeFilter }) => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
                         <span className="font-medium text-gray-600">Total Quantity:</span>
-                        <div className="text-gray-900">{processedProduce.totalQuantityKg} kg</div>
+                        <div className="text-gray-900">{processedProduce.totalQuantityKg} {processedProduce.produceType === 9 ? 'units' : 'kg'}</div>
                     </div>
                     <div>
                         <span className="font-medium text-gray-600">Available:</span>
-                        <div className="text-gray-900">{processedProduce.availableQuantityKg} kg</div>
+                        <div className="text-gray-900">{processedProduce.availableQuantityKg} {processedProduce.produceType === 9 ? 'units' : 'kg'}</div>
                     </div>
                     <div>
                         <span className="font-medium text-gray-600">Status:</span>
-                        <div className="text-gray-900">{processedProduce.status === 0 ? 'Harvested' : 'Sold'}</div>
+                        <div className="text-gray-900">{processedProduce.status === 0 ? (processedProduce.produceType === 9 ? 'Available' : 'Harvested') : 'Sold'}</div>
                     </div>
                     <div>
-                        <span className="font-medium text-gray-600">Lab Cert:</span>
+                        <span className="font-medium text-gray-600">{processedProduce.produceType === 9 ? 'Documentation:' : 'Lab Cert:'}</span>
                         <div className="text-gray-900">
                             {processedProduce.labCertUri ? (
                                 <a href={processedProduce.labCertUri} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                                    View Certificate
+                                    {processedProduce.produceType === 9 ? 'View Documentation' : 'View Certificate'}
                                 </a>
                             ) : 'N/A'}
                         </div>

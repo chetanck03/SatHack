@@ -176,9 +176,10 @@ const ProduceCard = ({ produceId, onClick }) => {
       6: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=300&h=200&fit=crop', // Spice
       7: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=300&h=200&fit=crop', // Nut
       8: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&h=200&fit=crop', // Seed
-      9: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=200&fit=crop'  // Other
+      9: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300&h=200&fit=crop', // Machinery
+      10: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=300&h=200&fit=crop'  // Other
     }
-    return defaultImages[produceType] || defaultImages[9] // Default to "Other" if type not found
+    return defaultImages[produceType] || defaultImages[10] // Default to "Other" if type not found
   }
 
   const mainImage = images && images.length > 0
@@ -234,25 +235,25 @@ const ProduceCard = ({ produceId, onClick }) => {
 
         <div className="flex items-center text-sm text-gray-600 mb-2">
           <MapPin className="h-4 w-4 mr-1" />
-          <span>{produceData.originFarm || 'Unknown Farm'}</span>
+          <span>{produceData.originFarm || (produceData.produceType == 9 ? 'Unknown Owner' : 'Unknown Farm')}</span>
         </div>
 
         <div className="flex items-center text-sm text-gray-600 mb-3">
           <Calendar className="h-4 w-4 mr-1" />
-          <span>Harvested {formatDate(produceData.harvestTime)}</span>
+          <span>{produceData.produceType == 9 ? 'Created' : 'Harvested'} {formatDate(produceData.harvestTime)}</span>
         </div>
 
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center text-sm text-gray-600">
             <Package className="h-4 w-4 mr-1" />
-            <span>{formatQuantity(produceData.availableQuantityKg)} kg available</span>
+            <span>{formatQuantity(produceData.availableQuantityKg)} {produceData.produceType == 9 ? 'units' : 'kg'} available</span>
           </div>
 
         </div>
 
         <div className="flex items-center justify-between">
           <div className="text-xl font-bold text-green-600">
-            {formatPrice(produceData.currentPrice)} ETH/kg
+            {formatPrice(produceData.currentPrice)} ETH{produceData.produceType == 9 ? '' : '/kg'}
           </div>
           <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
             View Details

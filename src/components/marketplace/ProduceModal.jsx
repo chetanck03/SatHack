@@ -250,9 +250,9 @@ const ProduceModal = ({ produceId, produceData, onClose }) => {
       6: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&h=400&fit=crop', // Spice
       7: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=600&h=400&fit=crop', // Nut
       8: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop', // Seed
-      9: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'  // Other
+      9: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=600&h=400&fit=crop'  // Machinery (Tractor)
     }
-    return defaultImages[produceType] || defaultImages[9] // Default to "Other" if type not found
+    return defaultImages[produceType] || defaultImages[9] // Default to "Machinery" if type not found
   }
 
   const currentImage = images && images.length > 0 
@@ -368,15 +368,15 @@ const ProduceModal = ({ produceId, produceData, onClose }) => {
                   <div className="space-y-2 text-gray-600">
                     <div className="flex items-center">
                       <MapPin className="h-5 w-5 mr-2" />
-                      <span>Origin: {produce.originFarm || 'Not specified'}</span>
+                      <span>{produce.produceType == 9 ? 'Owner:' : 'Origin:'} {produce.originFarm || 'Not specified'}</span>
                     </div>
                     <div className="flex items-center">
                       <Calendar className="h-5 w-5 mr-2" />
-                      <span>Harvested: {formatDate(produce.harvestTime)}</span>
+                      <span>{produce.produceType == 9 ? 'Created:' : 'Harvested:'} {formatDate(produce.harvestTime)}</span>
                     </div>
                     <div className="flex items-center">
                       <Package className="h-5 w-5 mr-2" />
-                      <span>Available: {formatQuantity(produce.availableQuantityKg)} kg</span>
+                      <span>Available: {formatQuantity(produce.availableQuantityKg)} {produce.produceType == 9 ? 'units' : 'kg'}</span>
                     </div>
                   </div>
                 </div>
@@ -384,17 +384,19 @@ const ProduceModal = ({ produceId, produceData, onClose }) => {
                 {/* Price */}
                 <div className="bg-green-50 p-6 rounded-xl border border-green-100">
                   <div className="text-4xl font-bold text-green-600 mb-2">
-                    {formatPrice(produce.currentPrice)} ETH/kg
+                    {formatPrice(produce.currentPrice)} ETH{produce.produceType == 9 ? '' : '/kg'}
                   </div>
                   <div className="text-gray-600">
-                    Total quantity: {formatQuantity(produce.totalQuantityKg)} kg
+                    Total quantity: {formatQuantity(produce.totalQuantityKg)} {produce.produceType == 9 ? 'units' : 'kg'}
                   </div>
                 </div>
 
                 {/* Lab Certificate */}
                 {produce.labCertUri && (
                   <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
-                    <h4 className="font-semibold text-gray-900 mb-3">Quality Certification</h4>
+                    <h4 className="font-semibold text-gray-900 mb-3">
+                      {produce.produceType == 9 ? 'Documentation' : 'Quality Certification'}
+                    </h4>
                     <a
                       href={produce.labCertUri}
                       target="_blank"
@@ -402,7 +404,7 @@ const ProduceModal = ({ produceId, produceData, onClose }) => {
                       className="flex items-center text-blue-600 hover:text-blue-700 transition-colors font-medium"
                     >
                       <ExternalLink className="h-5 w-5 mr-2" />
-                      View Lab Certificate
+                      {produce.produceType == 9 ? 'View Documentation' : 'View Lab Certificate'}
                     </a>
                   </div>
                 )}
@@ -426,7 +428,7 @@ const ProduceModal = ({ produceId, produceData, onClose }) => {
                         </div>
                         <div className="flex justify-between items-center text-sm mt-2">
                           <span className="text-gray-600">Available:</span>
-                          <span className="font-semibold text-gray-900">{Number(produce?.availableQuantityKg || 0)} kg</span>
+                          <span className="font-semibold text-gray-900">{Number(produce?.availableQuantityKg || 0)} {produce?.produceType == 9 ? 'units' : 'kg'}</span>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500">
@@ -442,7 +444,7 @@ const ProduceModal = ({ produceId, produceData, onClose }) => {
                     <div className="space-y-4">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Quantity (kg)
+                          Quantity ({produce.produceType == 9 ? 'units' : 'kg'})
                         </label>
                         <input
                           type="number"
